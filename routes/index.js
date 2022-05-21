@@ -1,7 +1,7 @@
-const producnto = require('./user');
+const userApi = require('./user');
 
-function userID(app) {
-    app.use('/yser', producnto)
+function usuarioNombre(app) {
+    app.use('/user',userApi )
 }
 
-module.exports = userID;
+module.exports = usuarioNombre;

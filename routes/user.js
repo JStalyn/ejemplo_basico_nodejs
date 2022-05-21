@@ -1,21 +1,51 @@
 const express = require('express');
+const app = express();
+const router = express.Router()
 
 
-const abc = express.Router();
+  
 
+router.get('/:id', (req, res)=>{
+  const { id } = req.params
 
+  res.json([
+    {
+    id:0,
+    "names": "sofia",  
+    apellido: "perez",
+    edad: 21
+  },
+  {
+    id: 1,
+    nombre: "maria",
+    apellido: "urbano",
+    edad: 10
+  }
+])
+})
 
-abc.get('/filter', (req, res) => {
-  res.send('Yo soy un filter');
-});
-
-abc.get('/:id', (req, res) => {
-  const { id } = req.params;
+router.post('/', (req, res)=>{
+  const body = req.body;
   res.json({
-    id,
-    name: 'Product 2',
-    price: 2000
+    mesage:"created",
+    data:body
+  })
+})
+router.patch('/:id', (req, res)=>{
+  const { id } = req.params
+  const body = req.body;
+  res.json({
+    mesage:"update",
+    data:body,
+    id
   });
 });
 
-module.exports = abc;
+router.delete('/:id', (req, res)=>{
+  const { id } = req.params
+  res.json({
+    mesage:"deleted",    
+    id
+  });
+});
+module.exports = router
